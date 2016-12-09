@@ -98,7 +98,7 @@ get
 ## function (x, pos = -1L, envir = as.environment(pos), mode = "any", 
 ##     inherits = TRUE) 
 ## .Internal(get(x, envir, mode, inherits))
-## <bytecode: 0x00000000139462d0>
+## <bytecode: 0x00000000139462f8>
 ## <environment: namespace:base>
 ```
 
@@ -444,6 +444,15 @@ UStempAvg[which(UStempAvg$YearlyAvgTempFChange==MaxChange)-1,]
 ```
 ##    Year YearlyAvgTempF YearlyAvgTempFChange
 ## 21 1920           46.7                 -0.7
+```
+
+```r
+UStempAvg[which(UStempAvg$YearlyAvgTempFChange==MaxChange),]
+```
+
+```
+##    Year YearlyAvgTempF YearlyAvgTempFChange
+## 22 1921           49.3                  2.6
 ```
 
 

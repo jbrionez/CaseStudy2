@@ -318,6 +318,7 @@ Observations for the temperature differential
 
 ```{r}
 UStempAvg[which(UStempAvg$YearlyAvgTempFChange==MaxChange)-1,]
+UStempAvg[which(UStempAvg$YearlyAvgTempFChange==MaxChange),]
 ```
 
 
