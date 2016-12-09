@@ -1,11 +1,6 @@
----
-title: "CaseStudy2"
-author: "Jacob Brionez Glenn Oswald Will Nichol"
-date: "December 8, 2016"
-output: 
-  html_document:
-    keep_md: yes
----
+# CaseStudy2
+Jacob Brionez Glenn Oswald Will Nichol  
+December 8, 2016  
 #Question 01 (10 points)
  
 ###Create the X matrix and print it from SAS, R, and Python.
@@ -27,10 +22,18 @@ quit;
  
 ####R code
 
-```{r}
+
+```r
 x <- c(4, 1, 2, 5, 0, 1, 1, 3, 8, 2,  5, 2)
 dim(x) <- c(3,4)
 x
+```
+
+```
+##      [,1] [,2] [,3] [,4]
+## [1,]    4    5    1    2
+## [2,]    1    0    3    5
+## [3,]    2    1    8    2
 ```
 
 ####Python Code
@@ -67,8 +70,16 @@ Please do the following with your assigned stock.
 
 Will, Jacob and Glenn	LNN
 
-```{r}
+
+```r
 library(tseries)
+```
+
+```
+## Warning: package 'tseries' was built under R version 3.3.2
+```
+
+```r
 library(ggplot2)
 
 #Download the data.
@@ -81,6 +92,17 @@ SNPvol <- sd(SNPret) * sqrt(250) * 100
 #Calculate volatility measure.
 
 get
+```
+
+```
+## function (x, pos = -1L, envir = as.environment(pos), mode = "any", 
+##     inherits = TRUE) 
+## .Internal(get(x, envir, mode, inherits))
+## <bytecode: 0x0000000013946160>
+## <environment: namespace:base>
+```
+
+```r
 Vol <- function(d, logrets)
 {
 	var = 0
@@ -104,6 +126,8 @@ lines(volest2,type="l",col="red")
 lines(volest3, type = "l", col="blue")
 ```
 
+![](CaseStudy2Final_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+
 #Question 03 (20 points)
 
 The built-in data set called Orange in R is about the growth of orange trees. The Orange data frame has 3 columns of records of the growth of orange trees.
@@ -118,7 +142,8 @@ circumference :  a numeric vector of trunk circumferences (mm). This is probably
 
 
 ####Calculate the mean and the median of the trunk circumferences for different size of the trees. 
-```{r}
+
+```r
 #The mean circumference is calculated Using the aggregate function and the results are put into a new data frame AvgCirc 
 AvgCirc <- aggregate(Orange$circumference, by = list(Orange$Tree), mean)
 
@@ -132,20 +157,35 @@ TreeData <- merge(x=AvgCirc, y=MedCirc, by="Group.1", all=TRUE)
 #The variables are renamed to more descriptive titles
 colnames(TreeData) <- c("Tree","MeanCircumference", "MedianCircumference")
 TreeData
-```                   
+```
+
+```
+##   Tree MeanCircumference MedianCircumference
+## 1    1          99.57143                 115
+## 2    2         135.28571                 156
+## 3    3          94.00000                 108
+## 4    4         139.28571                 167
+## 5    5         111.14286                 125
+```
 
 ####Make a scatter plot of the trunk circumferences against the age of the tree. Use different plotting symbols for different size of trees.
 
-```{r}
+
+```r
 TreePlot <- ggplot(Orange, aes(x=circumference, y=age, group=Tree))+geom_point(aes(shape=Tree, color=Tree))
 TreePlot+ggtitle("Tree Circumference vs. Age by Tree Size")
-```   
+```
+
+![](CaseStudy2Final_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 ####Display the trunk circumferences on a comparative boxplot against tree. Be sure you order the boxplots in the increasing order of maximum diameter.
 
-```{r}
+
+```r
 boxplot(circumference~Tree, data=Orange, main="Trunk Circumference vs Tree", xlab="Tree", ylab="Circumference (mm)")
 ```
+
+![](CaseStudy2Final_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 #Question 04 (45 points)
 
@@ -154,12 +194,73 @@ Download “Temp” data set (check your SMU email)
 ####(i)	Find the difference between the maximum and the minimum monthly average temperatures for each country and report/visualize top 20 countries with the maximum differences for the period since 1900.
 
 
-```{r}
+
+```r
 library(lubridate)
+```
+
+```
+## 
+## Attaching package: 'lubridate'
+```
+
+```
+## The following object is masked from 'package:base':
+## 
+##     date
+```
+
+```r
 library(ggplot2)
 library(plyr)
-library(dplyr)
+```
 
+```
+## 
+## Attaching package: 'plyr'
+```
+
+```
+## The following object is masked from 'package:lubridate':
+## 
+##     here
+```
+
+```r
+library(dplyr)
+```
+
+```
+## 
+## Attaching package: 'dplyr'
+```
+
+```
+## The following objects are masked from 'package:plyr':
+## 
+##     arrange, count, desc, failwith, id, mutate, rename, summarise,
+##     summarize
+```
+
+```
+## The following objects are masked from 'package:lubridate':
+## 
+##     intersect, setdiff, union
+```
+
+```
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+```
+
+```
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
+
+```r
 #Reads the Temp.CSV file into a data frame TempDataRaw
 TempDataRaw <- read.csv("C:/Users/Jacob/.spyder-py3/TEMP.csv", header=TRUE, sep=",", na.strings=c("","NA"))
 
@@ -176,7 +277,13 @@ TempData$Date <- as.POSIXlt(TempData$Date)
 #Check for missing values in the Date variable
 #There are 245,720 observation that are NA
 sum(is.na(TempData$Date))
+```
 
+```
+## [1] 245720
+```
+
+```r
 #Remove NA observations from the Date variable
 TempData <- TempData[!is.na(TempData$Date),]
 
@@ -199,7 +306,13 @@ colnames(TempData) <- c("Date","MonthlyAvgTemp","MonthlyAveTempUncert","Country"
 #The NA values must be removed so the aggregate function below works correctly
 #There are 1049 observation that are NA
 sum(is.na(TempData$MonthlyAvgTemp))
+```
 
+```
+## [1] 1049
+```
+
+```r
 #Remove NA observations in Date variable from the data frame
 TempData <- TempData[!is.na(TempData$MonthlyAvgTemp),]
 
@@ -250,12 +363,15 @@ DiffPlot <- DiffPlot + coord_flip()
 DiffPlot
 ```
 
+![](CaseStudy2Final_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+
 ####(ii)  Select a subset of data called “UStemp” where US land temperatures from 01/01/1990 in Temp data. Use UStemp dataset to answer the followings.
 
 ####a) Create a new column to display the monthly average land temperatures in Fahrenheit (°F).
 
 
-```{r}
+
+```r
 UStemp <- UStemp[which(UStemp$Country=="United States"),]
 #Creates the new variable with all observations set to NA
 UStemp$MonthlyAvgTempF <- NA
@@ -269,7 +385,8 @@ UStemp$MonthlyAvgTempF <- round(UStemp$MonthlyAvgTemp * 1.8 + 32, digits=3)
 ####b) Calculate average land temperature by year and plot it. The original file has the average land temperature by month.
 
 
-```{r}
+
+```r
 #Creates the new variable with all observations set to NA
 UStemp$Year <- NA
 #Changes the variable type to POSIXlt
@@ -295,11 +412,14 @@ AvgPlot <- AvgPlot + ylab("Temperature in Fahrenheit")
 AvgPlot
 ```
 
+![](CaseStudy2Final_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+
 ####c) Calculate the one year difference of average land temperature by year and provide the maximum difference (value) with corresponding two years.
  
 (for example, year 2000: add all 12 monthly averages and divide by 12 to get average temperature in 2000. You can do the same thing for all the available years. Then you can calculate the one year difference as 1991-1990, 1992-1991, etc)
 
-```{r}
+
+```r
 #Creates the new variable with all observations set to NA
 UStempAvg$YearlyAvgTempFChange <- NA
 #Changes the variable type to numeric
@@ -315,7 +435,20 @@ MaxChange = max(range(UStempAvg$YearlyAvgTempFChange, na.rm = TRUE))
 
 #Display the observations for the temperature differential
 UStempAvg[which(UStempAvg$YearlyAvgTempFChange==MaxChange)-1,]
+```
+
+```
+##    Year YearlyAvgTempF YearlyAvgTempFChange
+## 21 1920           46.7                 -0.7
+```
+
+```r
 UStempAvg[which(UStempAvg$YearlyAvgTempFChange==MaxChange),]
+```
+
+```
+##    Year YearlyAvgTempF YearlyAvgTempFChange
+## 22 1921           49.3                  2.6
 ```
 
 Download “CityTemp” data set (check your SMU email). 
@@ -323,7 +456,8 @@ Download “CityTemp” data set (check your SMU email).
 ####(iii) Find the difference between the maximum and the minimum temperatures for each major city and report/visualize top 20 cities with maximum differences for the period since 1900.
 
 
-```{r}
+
+```r
 #Reads the CityTemp.CSV file into a data frame CityTempDataRaw
 CityTempDataRaw <- read.csv("C:/Users/Jacob/.spyder-py3/CITYTEMP.csv", header=TRUE, sep=",", na.strings=c("","NA"))
 
@@ -339,7 +473,13 @@ CityTempData$Date <- as.POSIXlt(CityTempData$Date)
 #Check for missing values in the Date variable
 #There are 102,065 observation that are NA
 sum(is.na(CityTempData$Date))
+```
 
+```
+## [1] 102065
+```
+
+```r
 #Remove NA observations from the Date variable
 CityTempData <- CityTempData[!is.na(CityTempData$Date),]
 
@@ -356,7 +496,13 @@ CityTempData <- CityTempData[,-(6:7)]
 #The NA values must be removed so the aggregate function below works correctly
 #There are 92 observation that are NA
 sum(is.na(CityTempData$MonthlyAvgTemp))
+```
 
+```
+## [1] 92
+```
+
+```r
 #Remove NA observations in Date variable from the data frame
 CityTempData <- CityTempData[!is.na(CityTempData$MonthlyAvgTemp),]
 
@@ -403,6 +549,8 @@ CityDiffPlot <- CityDiffPlot + ylab("Temperature Difference in Celsius")
 CityDiffPlot <- CityDiffPlot + coord_flip()
 CityDiffPlot
 ```
+
+![](CaseStudy2Final_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
 ####(iv) Compare the two graphs in (i) and (iii)and comment.
 
