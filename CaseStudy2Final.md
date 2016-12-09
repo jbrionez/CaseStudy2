@@ -98,7 +98,7 @@ get
 ## function (x, pos = -1L, envir = as.environment(pos), mode = "any", 
 ##     inherits = TRUE) 
 ## .Internal(get(x, envir, mode, inherits))
-## <bytecode: 0x0000000013946340>
+## <bytecode: 0x00000000139462d0>
 ## <environment: namespace:base>
 ```
 
@@ -446,10 +446,10 @@ UStempAvg[which(UStempAvg$YearlyAvgTempFChange==MaxChange)-1,]
 ## 21 1920           46.7                 -0.7
 ```
 
-Download “CityTemp” data set (check your SMU email). 
 
 ####(iii) Find the difference between the maximum and the minimum temperatures for each major city and report/visualize top 20 cities with maximum differences for the period since 1900.
 
+Download “CityTemp” data set (check your SMU email).
 
 
 ```r

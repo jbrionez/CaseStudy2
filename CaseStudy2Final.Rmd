@@ -320,10 +320,10 @@ Observations for the temperature differential
 UStempAvg[which(UStempAvg$YearlyAvgTempFChange==MaxChange)-1,]
 ```
 
-Download “CityTemp” data set (check your SMU email). 
 
 ####(iii) Find the difference between the maximum and the minimum temperatures for each major city and report/visualize top 20 cities with maximum differences for the period since 1900.
 
+Download “CityTemp” data set (check your SMU email).
 
 ```{r}
 #Reads the CityTemp.CSV file into a data frame CityTempDataRaw

@@ -182,7 +182,7 @@ get</code></pre>
 <pre><code>## function (x, pos = -1L, envir = as.environment(pos), mode = &quot;any&quot;, 
 ##     inherits = TRUE) 
 ## .Internal(get(x, envir, mode, inherits))
-## &lt;bytecode: 0x0000000013946340&gt;
+## &lt;bytecode: 0x00000000139462d0&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <pre class="r"><code>Vol &lt;- function(d, logrets)
 {
@@ -431,10 +431,10 @@ MaxChange = max(range(UStempAvg$YearlyAvgTempFChange, na.rm = TRUE))</code></pre
 <pre class="r"><code>UStempAvg[which(UStempAvg$YearlyAvgTempFChange==MaxChange)-1,]</code></pre>
 <pre><code>##    Year YearlyAvgTempF YearlyAvgTempFChange
 ## 21 1920           46.7                 -0.7</code></pre>
-<p>Download “CityTemp” data set (check your SMU email).</p>
 </div>
 <div id="iii-find-the-difference-between-the-maximum-and-the-minimum-temperatures-for-each-major-city-and-reportvisualize-top-20-cities-with-maximum-differences-for-the-period-since-1900." class="section level4">
 <h4>(iii) Find the difference between the maximum and the minimum temperatures for each major city and report/visualize top 20 cities with maximum differences for the period since 1900.</h4>
+<p>Download “CityTemp” data set (check your SMU email).</p>
 <pre class="r"><code>#Reads the CityTemp.CSV file into a data frame CityTempDataRaw
 CityTempDataRaw &lt;- read.csv(&quot;C:/Users/Jacob/.spyder-py3/CITYTEMP.csv&quot;, header=TRUE, sep=&quot;,&quot;, na.strings=c(&quot;&quot;,&quot;NA&quot;))
 
