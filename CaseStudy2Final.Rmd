@@ -312,10 +312,12 @@ UStempAvg$YearlyAvgTempFChange <- as.numeric(UStempAvg$YearlyAvgTempFChange)
 UStempAvg$YearlyAvgTempFChange[2:114] <- diff(as.vector(UStempAvg$YearlyAvgTempF))
 #Select the observation that has the largest temperature change and put into a variable MaxChange
 MaxChange = max(range(UStempAvg$YearlyAvgTempFChange, na.rm = TRUE))
+```
 
-#Display the observations for the temperature differential
+Observations for the temperature differential
+
+```{r}
 UStempAvg[which(UStempAvg$YearlyAvgTempFChange==MaxChange)-1,]
-UStempAvg[which(UStempAvg$YearlyAvgTempFChange==MaxChange),]
 ```
 
 Download “CityTemp” data set (check your SMU email). 

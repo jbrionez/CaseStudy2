@@ -98,7 +98,7 @@ get
 ## function (x, pos = -1L, envir = as.environment(pos), mode = "any", 
 ##     inherits = TRUE) 
 ## .Internal(get(x, envir, mode, inherits))
-## <bytecode: 0x0000000013946160>
+## <bytecode: 0x0000000013946340>
 ## <environment: namespace:base>
 ```
 
@@ -432,23 +432,18 @@ UStempAvg$YearlyAvgTempFChange <- as.numeric(UStempAvg$YearlyAvgTempFChange)
 UStempAvg$YearlyAvgTempFChange[2:114] <- diff(as.vector(UStempAvg$YearlyAvgTempF))
 #Select the observation that has the largest temperature change and put into a variable MaxChange
 MaxChange = max(range(UStempAvg$YearlyAvgTempFChange, na.rm = TRUE))
+```
 
-#Display the observations for the temperature differential
+Observations for the temperature differential
+
+
+```r
 UStempAvg[which(UStempAvg$YearlyAvgTempFChange==MaxChange)-1,]
 ```
 
 ```
 ##    Year YearlyAvgTempF YearlyAvgTempFChange
 ## 21 1920           46.7                 -0.7
-```
-
-```r
-UStempAvg[which(UStempAvg$YearlyAvgTempFChange==MaxChange),]
-```
-
-```
-##    Year YearlyAvgTempF YearlyAvgTempFChange
-## 22 1921           49.3                  2.6
 ```
 
 Download “CityTemp” data set (check your SMU email). 
@@ -550,7 +545,7 @@ CityDiffPlot <- CityDiffPlot + coord_flip()
 CityDiffPlot
 ```
 
-![](CaseStudy2Final_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](CaseStudy2Final_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
 ####(iv) Compare the two graphs in (i) and (iii)and comment.
 
