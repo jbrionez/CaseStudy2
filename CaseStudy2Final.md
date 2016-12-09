@@ -98,7 +98,7 @@ get
 ## function (x, pos = -1L, envir = as.environment(pos), mode = "any", 
 ##     inherits = TRUE) 
 ## .Internal(get(x, envir, mode, inherits))
-## <bytecode: 0x00000000139462f8>
+## <bytecode: 0x0000000013946268>
 ## <environment: namespace:base>
 ```
 
@@ -292,15 +292,6 @@ rownames(TempData) <- 1:nrow(TempData)
 
 #Rename the variables in camel case and shorten to make more readable
 colnames(TempData) <- c("Date","MonthlyAvgTemp","MonthlyAveTempUncert","Country")
-
-#Creates the new variable with all observations set to NA
-#TempData$Month <- NA
-#Changes the variable type to character
-#TempData$Month <- as.character(TempData@Month)
-#Extracts the month from the date and sets the Month variable
-#Uses the month function from the lubridate package
-#label=TRUE displays the mont as text ex January abbr=TRUE displays monnt abreviated ex Jan
-#TempData$Month <- month(TempData$Date, label=TRUE, abbr=TRUE) 
 
 #Check for missing values in the MonthlyAvgTemp variable
 #The NA values must be removed so the aggregate function below works correctly

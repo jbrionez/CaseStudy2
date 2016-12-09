@@ -182,7 +182,7 @@ get</code></pre>
 <pre><code>## function (x, pos = -1L, envir = as.environment(pos), mode = &quot;any&quot;, 
 ##     inherits = TRUE) 
 ## .Internal(get(x, envir, mode, inherits))
-## &lt;bytecode: 0x00000000139462f8&gt;
+## &lt;bytecode: 0x0000000013946268&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <pre class="r"><code>Vol &lt;- function(d, logrets)
 {
@@ -306,15 +306,6 @@ rownames(TempData) &lt;- 1:nrow(TempData)
 
 #Rename the variables in camel case and shorten to make more readable
 colnames(TempData) &lt;- c(&quot;Date&quot;,&quot;MonthlyAvgTemp&quot;,&quot;MonthlyAveTempUncert&quot;,&quot;Country&quot;)
-
-#Creates the new variable with all observations set to NA
-#TempData$Month &lt;- NA
-#Changes the variable type to character
-#TempData$Month &lt;- as.character(TempData@Month)
-#Extracts the month from the date and sets the Month variable
-#Uses the month function from the lubridate package
-#label=TRUE displays the mont as text ex January abbr=TRUE displays monnt abreviated ex Jan
-#TempData$Month &lt;- month(TempData$Date, label=TRUE, abbr=TRUE) 
 
 #Check for missing values in the MonthlyAvgTemp variable
 #The NA values must be removed so the aggregate function below works correctly
